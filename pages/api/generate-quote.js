@@ -1,40 +1,14 @@
 import axios from 'axios'
-
-const inputValidation = async (req, res, next) => {
-  if (!req.body.input) {
-    return res.status(400).json({ error: 'Input is required' })
-  }
-  next()
-}
-
-const languageValidation = async (req, res, next) => {
-  const supportedLanguages = ['english', 'spanish', 'french', 'german']
-  let language = req.body.language || 'english'
-  if (!supportedLanguages.includes(language)) {
-    return res.status(400).json({ error: 'Invalid language' })
-  }
-  next()
-}
-
-const urlValidation = async (req, res, next) => {
-  const url = process.env.NEXT_PUBLIC_OPENAI_API_URL
-  if (!url) {
-    return res.status(400).json({ error: 'API URL is required' })
-  }
-  next()
-}
-
-const keyValidation = async (req, res, next) => {
-  const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY
-  if (!apiKey) {
-    return res.status(400).json({ error: 'API Key is required' })
-  }
-  next()
-}
+import {
+  inputValidation,
+  keyValidation,
+  languageValidation,
+  urlValidation,
+} from './helpers'
 
 const generateQuote = async (req, res) => {
   // Define variables for the prompt and language
-  let prompt = `Write an unique quote, in two sentence, can't use the input word.`
+  let prompt = `Write an unique quote, in two sentence, can't use the input word, prevent plagiarism, prevent duplicates, remember your quotes and don't repeat any, warm and kind feeling.`
   let language = req.body.language || 'English'
 
   // Create the prompt for the GPT-3 model
