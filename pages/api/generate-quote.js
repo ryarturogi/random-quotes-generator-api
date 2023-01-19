@@ -13,7 +13,7 @@ const generateQuote = async (req, res) => {
   let language = req.body.language || 'English'
 
   // Create the prompt for the GPT-3 model
-  prompt = `${prompt} Translated to ${language}: "${req.body.input}"`
+  prompt = `${prompt} Translated to ${language} and create the quote from this input: "${req.body.input}"`
 
   // Define variables for the API request
   const url = process.env.NEXT_PUBLIC_OPENAI_API_URL
