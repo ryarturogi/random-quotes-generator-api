@@ -8,11 +8,12 @@ import {
 
 const generateQuote = async (req, res) => {
   // Define variables for the prompt and language
-  let prompt = `Write an unique quote, in one sentence, can't use the input word, prevent plagiarism, prevent duplicates, remember your quotes and don't repeat any, warm and hopeful.`
+  let prompt = `"Craft a one-sentence original quote that exudes warmth and optimism, avoiding using the input word and ensuring it is not plagiarized or a repeat of any previously generated quotes."`
+
   let language = req.body.language || 'English'
 
   // Create the prompt for the GPT-3 model
-  prompt = `${prompt} Translated to ${language}:"${req.body.input}"`
+  prompt = `${prompt} Translated to ${language}: "${req.body.input}"`
 
   // Define variables for the API request
   const url = process.env.NEXT_PUBLIC_OPENAI_API_URL
