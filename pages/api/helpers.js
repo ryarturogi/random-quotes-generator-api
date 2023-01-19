@@ -1,3 +1,5 @@
+import { supportedLanguages } from './constants'
+
 const inputValidation = async (req, res, next) => {
   if (!req.body.input) {
     return res.status(400).json({ error: 'Input is required' })
@@ -6,7 +8,6 @@ const inputValidation = async (req, res, next) => {
 }
 
 const languageValidation = async (req, res, next) => {
-  const supportedLanguages = ['english', 'spanish', 'french', 'german']
   let language = req.body.language || 'english'
   if (!supportedLanguages.includes(language)) {
     return res.status(400).json({ error: 'Invalid language' })
