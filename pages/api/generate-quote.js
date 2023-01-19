@@ -48,10 +48,7 @@ const generateQuote = async (req, res) => {
 
             // Send the generated quote as the response
             res.status(200).json({
-              quote: response.data.choices[0].text
-                .trim()
-                .substring(1)
-                .replace('"', ''),
+              quote: response.data.choices[0].text.trim().replace('"', ''),
             })
           } catch (error) {
             console.error(error)
