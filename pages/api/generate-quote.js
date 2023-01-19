@@ -8,7 +8,7 @@ import {
 
 const generateQuote = async (req, res) => {
   // Define variables for the prompt and language
-  let prompt = `Write an unique quote, in two sentence, can't use the input word, prevent plagiarism, prevent duplicates, remember your quotes and don't repeat any, warm and kind feeling.`
+  let prompt = `Write an unique quote, in one sentence, can't use the input word, prevent plagiarism, prevent duplicates, remember your quotes and don't repeat any, warm and hopeful.`
   let language = req.body.language || 'English'
 
   // Create the prompt for the GPT-3 model
